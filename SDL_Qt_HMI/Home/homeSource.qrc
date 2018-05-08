@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Basic/Home_ButtonAppApps.png</file>
+        <file>Basic/Home_ButtonAppCalendar.png</file>
+        <file>Basic/Home_ButtonAppCarPlay.png</file>
+        <file>Basic/Home_ButtonAppClimate.png</file>
+        <file>Basic/Home_ButtonAppGallery.png</file>
+        <file>Basic/Home_ButtonAppLight_small.png</file>
+        <file>Basic/Home_ButtonAppMedia.png</file>
+        <file>Basic/Home_ButtonAppNavi.png</file>
+        <file>Basic/Home_ButtonApp_Normal.png</file>
+        <file>Basic/Home_ButtonAppOnStar.png</file>
+        <file>Basic/Home_ButtonAppPaging_Selected.png</file>
+        <file>Basic/Home_ButtonAppPhone.png</file>
+        <file>Basic/Home_ButtonAppPhoneProjection.png</file>
+        <file>Basic/Home_ButtonApp_Pushed.png</file>
+        <file>Basic/Home_ButtonAppSettings.png</file>
+        <file>Basic/Home_ButtonApp_Shift.png</file>
+        <file>Basic/Home_ButtonAppText.png</file>
+        <file>Basic/imgHomeLeftArrow_Active.png</file>
+        <file>Basic/imgHomeLeftArrow_Normal.png</file>
+        <file>Basic/imgHomeLeftArrow_Unavailable.png</file>
+        <file>Basic/imgHomePageIndicator_Normal.png</file>
+        <file>Basic/imgHomePageIndicator_Pushed.png</file>
+        <file>Basic/imgHomeRightArrow_Active.png</file>
+        <file>Basic/imgHomeRightArrow_Normal.png</file>
+        <file>Basic/imgHomeRightArrow_Unavailable.png</file>
+    </qresource>
+</RCC>

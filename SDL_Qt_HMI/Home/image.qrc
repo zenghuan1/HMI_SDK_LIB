@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Basic/Home_ButtonAppApps.svg</file>
+        <file>Basic/Home_ButtonAppCalendar.svg</file>
+        <file>Basic/Home_ButtonAppCarPlay.svg</file>
+        <file>Basic/Home_ButtonAppClimate.svg</file>
+        <file>Basic/Home_ButtonAppGallery.svg</file>
+        <file>Basic/Home_ButtonAppLight_small.svg</file>
+        <file>Basic/Home_ButtonAppMedia.svg</file>
+        <file>Basic/Home_ButtonAppNavi.svg</file>
+        <file>Basic/Home_ButtonApp_Normal.svg</file>
+        <file>Basic/Home_ButtonAppOnStar.svg</file>
+        <file>Basic/Home_ButtonAppPaging_Selected.svg</file>
+        <file>Basic/Home_ButtonAppPhone.svg</file>
+        <file>Basic/Home_ButtonAppPhoneProjection.svg</file>
+        <file>Basic/Home_ButtonApp_Pushed.svg</file>
+        <file>Basic/Home_ButtonAppSettings.svg</file>
+        <file>Basic/Home_ButtonApp_Shift.svg</file>
+        <file>Basic/Home_ButtonAppText.svg</file>
+        <file>Basic/imgHomeLeftArrow_Active.svg</file>
+        <file>Basic/imgHomeLeftArrow_Normal.svg</file>
+        <file>Basic/imgHomeLeftArrow_Unavailable.svg</file>
+        <file>Basic/imgHomePageIndicator_Normal.svg</file>
+        <file>Basic/imgHomePageIndicator_Pushed.svg</file>
+        <file>Basic/imgHomeRightArrow_Active.svg</file>
+        <file>Basic/imgHomeRightArrow_Normal.svg</file>
+        <file>Basic/imgHomeRightArrow_Unavailable.svg</file>
+    </qresource>
+</RCC>
