@@ -26,8 +26,6 @@ public:
 private:
     Ui::MainWindow *ui;
     AppViewManager *m_pAppViewManager;
-    QuickLanuchView *m_pQuickLanuch;
-
 };
 
 #endif // MAINWINDOW_H

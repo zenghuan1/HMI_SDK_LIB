@@ -64,8 +64,9 @@ HMIFrameWork::HMIFrameWork()
 
 HMIFrameWork::~HMIFrameWork()
 {
-    if(m_pMainWin)
-        delete m_pMainWin;
     if(m_pAppManager)
+    {
         delete m_pAppManager;
+        m_pAppManager = NULL;
+    }
 }

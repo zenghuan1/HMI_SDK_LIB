@@ -9,13 +9,14 @@
 class SDLApps:public QObject,public App
 {
     Q_OBJECT
+private:
+    SDLApps();
 public:
     enum eViewId{
         eViewId_SDL_Main
     };
-    SDLApps();
-    static SDLApps* Inst();
 
+    static SDLApps* Inst();
     void onAppShow(string appId,string viewId) ;
     void onAppHide();
     void onNotify(string appId,map<string,string> parameter);

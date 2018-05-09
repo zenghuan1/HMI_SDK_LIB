@@ -9,6 +9,11 @@ CView::CView(int viewId)
 
 }
 
+CView::~CView()
+{
+
+}
+
 
 void CView::setView(void *view)
 {

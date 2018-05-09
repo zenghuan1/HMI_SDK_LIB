@@ -5,6 +5,7 @@ class CView:IView
 {
 public:
     CView(int viewId);
+    virtual ~CView();
     virtual void setView(void* view);
     virtual int getViewId();
     virtual void viewAction(int state);

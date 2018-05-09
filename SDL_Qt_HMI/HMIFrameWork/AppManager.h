@@ -13,6 +13,7 @@ class AppManager : public IAppManager
 
 public:
     AppManager();
+    virtual ~AppManager();
     virtual void RegisterApp(App* app);
     virtual void AppShow(string appId,string viewId = "Main");
     virtual void AppBack();

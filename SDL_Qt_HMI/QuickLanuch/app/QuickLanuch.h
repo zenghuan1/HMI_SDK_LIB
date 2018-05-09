@@ -7,11 +7,12 @@
 class QuickLanuch:public QObject,public App
 {
     Q_OBJECT
+private:
+    QuickLanuch();
 public:
     enum eViewId{
         eViewId_Main
     };
-    QuickLanuch();
     static QuickLanuch* Inst();
     void onAppShow(string appId,string viewId) ;
     void onAppHide();

@@ -7,6 +7,11 @@ AppManager::AppManager()
 {
 }
 
+AppManager::~AppManager()
+{
+
+}
+
 void AppManager::RegisterApp(App *app)
 {
     if(app)

@@ -10,12 +10,12 @@
 class Home:public QObject,public App
 {
     Q_OBJECT
+private:
+        Home();
 public:
     enum eViewId{
         eViewId_Main
     };
-
-    Home();
 
     static Home* Inst();
     void HomeClicked();

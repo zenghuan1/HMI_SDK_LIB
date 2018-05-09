@@ -4,7 +4,6 @@
 MainWindow::MainWindow(QWidget *parent)
     :QMainWindow(parent)
     ,ui(new Ui::MainWindow)
-    ,m_pQuickLanuch(NULL)
 {
     ui->setupUi(this);
 
