@@ -11,7 +11,7 @@
 #include <QCoreApplication>
 #include "HMIFrameWork/log_interface.h"
 #include "HMIWidgets/CCButton.h"
-#include "QuickLanuch/QuickLanuchView.h"
+#include "QuickLanuch/UI/QuickLanuchView.h"
 #include "HMIFrameWork/AppConfig.h"
 #include "HMIFrameWork/App.h"
 #include "HMIFrameWork/CView.h"

@@ -1,7 +1,7 @@
 #include "QuickLanuchView.h"
 #include <QStylePainter>
 #include <QStyleOption>
-#include "QuickLanuch.h"
+#include "QuickLanuch/app/QuickLanuch.h"
 #include "HMIFrameWork/HMIFrameWork.h"
 QuickLanuchView::QuickLanuchView(QWidget *parent)
     :QWidget(parent)
@@ -178,30 +178,30 @@ void QuickLanuchView::InitQuickLanuchView()
 
     {
         AppInfo appInfo1;
-        appInfo1.AppBgPathNormal = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppBgPathPush = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppEditPath = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppIconPath = ":/Basic/Home_ButtonAppMedia.png";
+        appInfo1.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
         appInfo1.AppName =QObject::tr(MEDIA_NAME);
         appInfo1.AppType = MEDIA_ID;
         listApps.append(appInfo1);
     }
     {
         AppInfo appInfo2;
-        appInfo2.AppBgPathNormal = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppBgPathPush = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppEditPath = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppIconPath = ":/Basic/Home_ButtonAppNavi.png";
+        appInfo2.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
         appInfo2.AppName =QObject::tr(NAV_NAME);
         appInfo2.AppType =NAV_ID;
         listApps.append(appInfo2);
     }
     {
         AppInfo appInfo3;
-        appInfo3.AppBgPathNormal = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppBgPathPush = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppEditPath = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppIconPath = ":/Basic/Home_ButtonAppPhone.png";
+        appInfo3.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
         appInfo3.AppName =QObject::tr(PHONE_NAME);
         appInfo3.AppType =PHONE_ID;
         listApps.append(appInfo3);
@@ -233,70 +233,70 @@ void QuickLanuchView::InitQuickLanuchData()
 {
     {
         AppInfo appInfo1;
-        appInfo1.AppBgPathNormal = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppBgPathPush = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppEditPath = ":/Basic/Home_ButtonAppMedia.png";
-        appInfo1.AppIconPath = ":/Basic/Home_ButtonAppMedia.png";
+        appInfo1.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppMedia.png";
         appInfo1.AppName =QObject::tr(MEDIA_NAME);
         appInfo1.AppType = MEDIA_ID;
         m_ListData.append(appInfo1);
     }
     {
         AppInfo appInfo2;
-        appInfo2.AppBgPathNormal = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppBgPathPush = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppEditPath = ":/Basic/Home_ButtonAppNavi.png";
-        appInfo2.AppIconPath = ":/Basic/Home_ButtonAppNavi.png";
+        appInfo2.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppNavi.png";
         appInfo2.AppName =QObject::tr(NAV_NAME);
         appInfo2.AppType =NAV_ID;
         m_ListData.append(appInfo2);
     }
     {
         AppInfo appInfo3;
-        appInfo3.AppBgPathNormal = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppBgPathPush = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppEditPath = ":/Basic/Home_ButtonAppPhone.png";
-        appInfo3.AppIconPath = ":/Basic/Home_ButtonAppPhone.png";
+        appInfo3.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppPhone.png";
         appInfo3.AppName =QObject::tr(PHONE_NAME);
         appInfo3.AppType =PHONE_ID;
         m_ListData.append(appInfo3);
     }
     {
         AppInfo appInfo4;
-        appInfo4.AppBgPathNormal = ":/Basic/Home_ButtonAppGallery.png";
-        appInfo4.AppBgPathPush = ":/Basic/Home_ButtonAppGallery.png";
-        appInfo4.AppEditPath = ":/Basic/Home_ButtonAppGallery.png";
-        appInfo4.AppIconPath = ":/Basic/Home_ButtonAppGallery.png";
+        appInfo4.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppGallery.png";
         appInfo4.AppName =QObject::tr(SDLAPPS_NAME);
         appInfo4.AppType =SDLAPPS_ID;
         m_ListData.append(appInfo4);
     }
     {
         AppInfo appInfo5;
-        appInfo5.AppBgPathNormal = ":/Basic/Home_ButtonAppSettings.png";
-        appInfo5.AppBgPathPush = ":/Basic/Home_ButtonAppSettings.png";
-        appInfo5.AppEditPath = ":/Basic/Home_ButtonAppSettings.png";
-        appInfo5.AppIconPath = ":/Basic/Home_ButtonAppSettings.png";
+        appInfo5.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppSettings.png";
         appInfo5.AppName =QObject::tr(SETTINGS_NAME);
         appInfo5.AppType =SETTINGS_ID;
         m_ListData.append(appInfo5);
     }
     {
         AppInfo appInfo6;
-        appInfo6.AppBgPathNormal = ":/Basic/Home_ButtonAppClimate.png";
-        appInfo6.AppBgPathPush = ":/Basic/Home_ButtonAppClimate.png";
-        appInfo6.AppEditPath = ":/Basic/Home_ButtonAppClimate.png";
-        appInfo6.AppIconPath = ":/Basic/Home_ButtonAppClimate.png";
+        appInfo6.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppClimate.png";
         appInfo6.AppName =QObject::tr(HVAC_NAME);
         appInfo6.AppType =HVAC_ID;
         m_ListData.append(appInfo6);
     }
     {
         AppInfo appInfo7;
-        appInfo7.AppBgPathNormal = ":/Basic/Home_ButtonAppText.png";
-        appInfo7.AppBgPathPush = ":/Basic/Home_ButtonAppText.png";
-        appInfo7.AppEditPath = ":/Basic/Home_ButtonAppText.png";
-        appInfo7.AppIconPath = ":/Basic/Home_ButtonAppText.png";
+        appInfo7.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppBgPathPush = ":/QuickLanuch/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppEditPath = ":/QuickLanuch/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppIconPath = ":/QuickLanuch/Source/images/Home_ButtonAppText.png";
         appInfo7.AppName =QObject::tr(MESSAGE_NAME);
         appInfo7.AppType =MESSAGE_ID;
         m_ListData.append(appInfo7);
@@ -304,10 +304,10 @@ void QuickLanuchView::InitQuickLanuchData()
 
     {
         AppInfo appInfo8;
-        appInfo8.AppBgPathNormal = ":/Basic/Home_Weather.png";
-        appInfo8.AppBgPathPush = ":/Basic/Home_Weather.png";
-        appInfo8.AppEditPath = ":/Basic/Home_Weather.png";
-        appInfo8.AppIconPath = ":/Basic/Home_Weather.png";
+        appInfo8.AppBgPathNormal = ":/QuickLanuch/Source/images/Home_Weather.png";
+        appInfo8.AppBgPathPush = ":/QuickLanuch/Source/images/Home_Weather.png";
+        appInfo8.AppEditPath = ":/QuickLanuch/Source/images/Home_Weather.png";
+        appInfo8.AppIconPath = ":/QuickLanuch/Source/images/Home_Weather.png";
         appInfo8.AppName =QObject::tr(WEATHER_NAME);
         appInfo8.AppType =WEATHER_ID;
         m_ListData.append(appInfo8);

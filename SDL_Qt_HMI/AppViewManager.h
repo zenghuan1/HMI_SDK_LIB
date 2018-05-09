@@ -2,7 +2,7 @@
 #define APPVIEWMANAGER_H
 
 #include <QWidget>
-#include <Home/HomeView.h>
+#include <Home/UI/HomeView.h>
 #include <QProcess>
 #include "HMIFrameWork/AppConfig.h"
 #include "SDLApps/Gen3UIManager.h"
@@ -17,20 +17,6 @@ class AppViewManager:public QWidget
 public:
     AppViewManager(QWidget *parent = 0);
     ~AppViewManager();
-
-private slots:
-    void OnAppPress(int index,QString type,QString name);
-    void OnEditStatus(bool IsEnterStatus);
-    void OnEnterQucikLanuchEdit(bool bStatus);
-    void OnTriggerDomain(int,int,CCButton::CCBtnInfo);
-private:
-    void InitPageIndicator(int nAppsSize);
-public:signals:
-    void SigEditStatus(bool);
-    void SigEnterQuickLanuchEdit(bool);
-    void SigTriggerDomain(int,int,CCButton::CCBtnInfo);
-
-private:
 
 };
 

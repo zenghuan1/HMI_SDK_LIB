@@ -1,7 +1,7 @@
 #include "CeVideoStream.h"
 #include "main.h"
 #include "SDLApps/Common/AppBase.h"
-#include "SDLApps/SDLAppsView.h"
+#include "SDLApps/UI/SDLAppsView.h"
 
 CeVideoStream::CeVideoStream(AppListInterface *pList, QWidget *parent) : QWidget(parent)
   , videoWidth(SCREEN_WIDTH), videoHeight(SCREEN_HEIGHT) {

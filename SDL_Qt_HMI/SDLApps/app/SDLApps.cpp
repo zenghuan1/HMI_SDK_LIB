@@ -1,5 +1,5 @@
 #include "SDLApps.h"
-#include "SDLAppsWindow.h"
+#include "SDLApps/UI/SDLAppsWindow.h"
 SDLApps* SDLApps::m_pInst = NULL;
 
 SDLApps::SDLApps()

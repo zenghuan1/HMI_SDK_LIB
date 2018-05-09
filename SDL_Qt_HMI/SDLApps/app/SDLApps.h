@@ -1,21 +1,24 @@
-#ifndef QUICKLANUCH_H
-#define QUICKLANUCH_H
-
+#ifndef SDLAPPS_H
+#define SDLAPPS_H
 #include "HMIFrameWork/App.h"
-#include "QuickLanuchView.h"
 #include "HMIFrameWork/AppConfig.h"
-class QuickLanuch:public QObject,public App
+#include "SDLApps/Factory/SDLVFactory.h"
+#include "SDLApps/UI/SDLAppsWindow.h"
+#include "HMIFrameWork/log_interface.h"
+#include "HMIFrameWork/HMIFrameWork.h"
+class SDLApps:public QObject,public App
 {
     Q_OBJECT
 public:
     enum eViewId{
-        eViewId_Main
+        eViewId_SDL_Main
     };
-    QuickLanuch();
-    static QuickLanuch* Inst();
+    SDLApps();
+    static SDLApps* Inst();
+
     void onAppShow(string appId,string viewId) ;
     void onAppHide();
-    void onNotify(string appId, map<string, string> parameter);
+    void onNotify(string appId,map<string,string> parameter);
 public slots:
     void OnAppShow(string appId,string viewId);
     void OnAppHide();
@@ -25,9 +28,8 @@ public:signals:
     void SigAppShow(string appId,string viewId);
     void SigAppHide();
     void SigNotify(string appId, map<string, string> parameter);
-    void SigAppInfo(int x, int y,string type);
 private:
-    static QuickLanuch* m_pInst;
+    static SDLApps *m_pInst;
 };
 
-#endif // QUICKLANUCH_H
+#endif // SDLAPPS_H

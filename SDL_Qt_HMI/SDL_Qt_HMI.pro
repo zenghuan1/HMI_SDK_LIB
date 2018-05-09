@@ -81,22 +81,22 @@ SOURCES += main.cpp\
     HMIFrameWork/App.cpp \
     MainWindow.cpp \
     HMIFrameWork/HMIFrameWork.cpp \
-    Home/HomeView.cpp \
-    Home/Home.cpp \
-    SDLApps/SDLAppsView.cpp \
-    SDLApps/SDLApps.cpp \
     HMIFrameWork/CView.cpp \
     HMIFrameWork/ViewFactory.cpp \
-    Home/HomeVFactory.cpp \
-    SDLApps/SDLVFactory.cpp \
     AppViewManager.cpp \
-    Home/HomeWindow.cpp \
-    SDLApps/SDLAppsWindow.cpp \
     HMIWidgets/CCButton.cpp \
-    QuickLanuch/QuickLanuch.cpp \
-    QuickLanuch/QuickLanuchView.cpp \
-    QuickLanuch/QuickLanuchWindow.cpp \
-    QuickLanuch/QuickVFactory.cpp
+    Home/app/Home.cpp \
+    Home/Factory/HomeVFactory.cpp \
+    Home/UI/HomeView.cpp \
+    Home/UI/HomeWindow.cpp \
+    QuickLanuch/app/QuickLanuch.cpp \
+    QuickLanuch/Factory/QuickVFactory.cpp \
+    QuickLanuch/UI/QuickLanuchView.cpp \
+    QuickLanuch/UI/QuickLanuchWindow.cpp \
+    SDLApps/app/SDLApps.cpp \
+    SDLApps/Factory/SDLVFactory.cpp \
+    SDLApps/UI/SDLAppsView.cpp \
+    SDLApps/UI/SDLAppsWindow.cpp
 
 unix {
     SOURCES += SDLApps/VideoStream/gst_player.cpp
@@ -140,22 +140,22 @@ HEADERS  +=  \
     HMIFrameWork/App.h \
     MainWindow.h \
     HMIFrameWork/HMIFrameWork.h \
-    Home/HomeView.h \
-    Home/Home.h \
-    SDLApps/SDLAppsView.h \
-    SDLApps/SDLApps.h \
     HMIFrameWork/CView.h \
     HMIFrameWork/ViewFactory.h \
-    Home/HomeVFactory.h \
-    SDLApps/SDLVFactory.h \
     AppViewManager.h \
-    Home/HomeWindow.h \
-    SDLApps/SDLAppsWindow.h \
     HMIWidgets/CCButton.h \
-    QuickLanuch/QuickLanuch.h \
-    QuickLanuch/QuickLanuchView.h \
-    QuickLanuch/QuickLanuchWindow.h \
-    QuickLanuch/QuickVFactory.h
+    Home/app/Home.h \
+    Home/Factory/HomeVFactory.h \
+    Home/UI/HomeView.h \
+    Home/UI/HomeWindow.h \
+    QuickLanuch/app/QuickLanuch.h \
+    QuickLanuch/Factory/QuickVFactory.h \
+    QuickLanuch/UI/QuickLanuchView.h \
+    QuickLanuch/UI/QuickLanuchWindow.h \
+    SDLApps/app/SDLApps.h \
+    SDLApps/Factory/SDLVFactory.h \
+    SDLApps/UI/SDLAppsView.h \
+    SDLApps/UI/SDLAppsWindow.h
 
 
 
@@ -170,7 +170,8 @@ unix {
 
 RESOURCES += \
     SDLApps/image.qrc \
-    Home/imageSource.qrc
+    Home/Source/HomeImages.qrc \
+    QuickLanuch/Source/QuickLanuchImages.qrc
 
 unix {
   x86 {

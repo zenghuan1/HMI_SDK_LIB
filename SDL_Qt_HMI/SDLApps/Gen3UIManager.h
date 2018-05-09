@@ -6,7 +6,7 @@
 #include "ui_interface.h"
 #include "app_list_interface.h"
 #include "Template/TemplateManager.h"
-#include "SDLApps/SDLAppsView.h"
+#include "SDLApps/UI/SDLAppsView.h"
 
 class CGen3UIManager : public QWidget, public UIInterface {
   Q_OBJECT

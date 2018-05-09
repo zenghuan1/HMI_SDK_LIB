@@ -1,5 +1,5 @@
 #include "Home.h"
-#include "HomeWindow.h"
+#include "Home/UI/HomeWindow.h"
 #include "HMIFrameWork/HMIFrameWork.h"
 Home* Home::m_pInst = NULL;
 Home::Home()

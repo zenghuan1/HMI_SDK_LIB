@@ -2,15 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Home/HomeWindow.h"
-#include "QuickLanuch/QuickLanuchView.h"
-#include "Home/Home.h"
-#include "Home/HomeVFactory.h"
-#include "QuickLanuch/QuickLanuch.h"
+#include "Home/app/Home.h"
+#include "QuickLanuch/app/QuickLanuch.h"
 #include "HMIFrameWork/AppManager.h"
 #include "HMIFrameWork/HMIFrameWork.h"
 #include "AppViewManager.h"
-#include "SDLApps/SDLApps.h"
+#include "SDLApps/app/SDLApps.h"
 namespace Ui {
 class MainWindow;
 }

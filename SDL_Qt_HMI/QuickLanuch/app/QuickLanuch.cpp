@@ -1,6 +1,6 @@
 #include "QuickLanuch.h"
-#include "QuickVFactory.h"
-#include "QuickLanuchWindow.h"
+#include "QuickLanuch/Factory/QuickVFactory.h"
+#include "QuickLanuch/UI/QuickLanuchWindow.h"
 QuickLanuch* QuickLanuch::m_pInst = NULL;
 
 QuickLanuch::QuickLanuch()

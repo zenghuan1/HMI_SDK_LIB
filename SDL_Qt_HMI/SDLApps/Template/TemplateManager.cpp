@@ -11,7 +11,7 @@
 #include "TemplateManager.h"
 #include "SDLApps/Config/Config.h"
 #include "SDLApps/VideoStream/CeVideoStream.h"
-#include "SDLApps/SDLAppsView.h"
+#include "SDLApps//UI/SDLAppsView.h"
 #include "SDLApps/AppListView/AppListView.h"
 #include "SDLApps/CommandView/CommandView.h"
 #include "SDLApps/Show/MediaShow.h"

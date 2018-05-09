@@ -1,5 +1,5 @@
 #include "CCButton.h"
-#include "HomeView.h"
+#include "Home/UI/HomeView.h"
 CCButton::CCButton(QWidget *parent)
   : QWidget(parent)
   , m_pOpacityAnimation(NULL)

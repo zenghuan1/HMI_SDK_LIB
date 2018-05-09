@@ -1,6 +1,6 @@
 #include "HomeVFactory.h"
-#include "Home.h"
-#include "HomeView.h"
+#include "Home/app/Home.h"
+#include "Home/UI/HomeView.h"
 #include "HMIFrameWork/CView.h"
 HomeVFactory::HomeVFactory()
 {

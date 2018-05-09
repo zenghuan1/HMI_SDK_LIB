@@ -1,6 +1,6 @@
 #include "QuickVFactory.h"
-#include "QuickLanuch.h"
-#include "QuickLanuchView.h"
+#include "QuickLanuch/app/QuickLanuch.h"
+#include "QuickLanuch/UI/QuickLanuchView.h"
 
 QuickVFactory::QuickVFactory()
 {

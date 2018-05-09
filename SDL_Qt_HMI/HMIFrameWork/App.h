@@ -27,8 +27,6 @@ public:
     virtual void ViewForwardById(int viewId);
 
     virtual void InitViewFactory(ViewFactory* viewFactory);
-
-    string getViewId(string viewId);
 private:
     CView* findViewById(int viewId);
     void EraseView(CView* pView);

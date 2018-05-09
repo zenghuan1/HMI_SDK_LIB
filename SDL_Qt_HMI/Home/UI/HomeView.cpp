@@ -1,10 +1,13 @@
-#include "HomeApp.h"
+#include "HomeView.h"
 #include <QDebug>
 #include<unistd.h>
 #include <QFont>
-#include "HomeViewManage.h"
-HomeApp::HomeApp(QWidget *parent)
+#include "AppViewManager.h"
+#include "Home/app/Home.h"
+#include "HMIFrameWork/HMIFrameWork.h"
+HomeView::HomeView(QWidget *parent)
     :QWidget(parent)
+    ,CView(Home::eViewId_Main)
     ,m_pAppBtn(NULL)
     ,m_pAppBtnShadow(NULL)
     ,m_pAppBtnZoom(NULL)
@@ -35,7 +38,6 @@ HomeApp::HomeApp(QWidget *parent)
     ,m_iFlipAppIndex(-1)
     ,m_iFlipStep(0)
 {
-    this->show();
     m_ListBtn.clear();
     m_MapRect.clear();
     installEventFilter(this);
@@ -63,24 +65,141 @@ HomeApp::HomeApp(QWidget *parent)
     m_pMoveAnimation->setTargetObject(this);
     m_pMoveAnimation->setPropertyName("position");
 
+    SetPageSize(QSize(800,480));
+    InitHomeView();
+    StartUpTriggerDomain(true);
+    SetTriggerDomain(QRect(0,0,160,480));
+   // this->show();
 }
 
-HomeApp::~HomeApp()
+HomeView::~HomeView()
 {
 
 }
 
-void HomeApp::SetHomeAppPageSize(QSize size)
+void HomeView::viewAction(int state)
+{
+    INFO()<<" Homeview  viewAction state = " << state;
+}
+
+void HomeView::InitHomeView()
+{
+    connect(this,SIGNAL(SigRelease(int,QString,QString)),this,SLOT(OnAppClick(int,QString,QString)),Qt::UniqueConnection);
+
+    QList<AppInfo> listApps;
+    {
+        AppInfo appInfo1;
+        appInfo1.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppEditPath = ":/Home/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppIconPath = ":/Home/Source/images/Home_ButtonAppMedia.png";
+        appInfo1.AppName =QObject::tr(MEDIA_NAME);
+        appInfo1.AppType = MEDIA_ID;
+        listApps.append(appInfo1);
+    }
+    {
+        AppInfo appInfo2;
+        appInfo2.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppEditPath = ":/Home/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppIconPath = ":/Home/Source/images/Home_ButtonAppNavi.png";
+        appInfo2.AppName =QObject::tr(NAV_NAME);
+        appInfo2.AppType =NAV_ID;
+        listApps.append(appInfo2);
+    }
+    {
+        AppInfo appInfo3;
+        appInfo3.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppEditPath = ":/Home/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppIconPath = ":/Home/Source/images/Home_ButtonAppPhone.png";
+        appInfo3.AppName =QObject::tr(PHONE_NAME);
+        appInfo3.AppType =PHONE_ID;
+        listApps.append(appInfo3);
+    }
+    {
+        AppInfo appInfo4;
+        appInfo4.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppEditPath = ":/Home/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppIconPath = ":/Home/Source/images/Home_ButtonAppGallery.png";
+        appInfo4.AppName =QObject::tr(SDLAPPS_NAME);
+        appInfo4.AppType =SDLAPPS_ID;
+        listApps.append(appInfo4);
+    }
+    {
+        AppInfo appInfo5;
+        appInfo5.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppEditPath = ":/Home/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppIconPath = ":/Home/Source/images/Home_ButtonAppSettings.png";
+        appInfo5.AppName =QObject::tr(SETTINGS_NAME);
+        appInfo5.AppType =SETTINGS_ID;
+        listApps.append(appInfo5);
+    }
+    {
+        AppInfo appInfo6;
+        appInfo6.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppEditPath = ":/Home/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppIconPath = ":/Home/Source/images/Home_ButtonAppClimate.png";
+        appInfo6.AppName =QObject::tr(HVAC_NAME);
+        appInfo6.AppType =HVAC_ID;
+        listApps.append(appInfo6);
+    }
+    {
+        AppInfo appInfo7;
+        appInfo7.AppBgPathNormal = ":/Home/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppBgPathPush = ":/Home/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppEditPath = ":/Home/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppIconPath = ":/Home/Source/images/Home_ButtonAppText.png";
+        appInfo7.AppName =QObject::tr(MESSAGE_NAME);
+        appInfo7.AppType =MESSAGE_ID;
+        listApps.append(appInfo7);
+    }
+
+    {
+        AppInfo appInfo8;
+        appInfo8.AppBgPathNormal = ":/Home/Source/images/Home_Weather.png";
+        appInfo8.AppBgPathPush = ":/Home/Source/images/Home_Weather.png";
+        appInfo8.AppEditPath = ":/Home/Source/images/Home_Weather.png";
+        appInfo8.AppIconPath = ":/Home/Source/images/Home_Weather.png";
+        appInfo8.AppName =QObject::tr(WEATHER_NAME);
+        appInfo8.AppType =WEATHER_ID;
+        listApps.append(appInfo8);
+    }
+
+    for(int i = 0;i<listApps.size();++i)
+    {
+        int nRow = i / 4;
+        int nClomn = i % 4;
+        int nPage = (nRow + 1) / 2 + (nRow + 1) % 2;
+        CCButton * app = new CCButton(this);
+        app->SetAppGeometry(QRect(160  + (nPage -1)*800 + COLUMN_SPACE*nClomn,98 + ROW_SPACE*(nRow%2),MULTI_BT_SIZE,MULTI_BT_SIZE));
+        app->InsertEditStyle(QRect(0,0,142,142),listApps.at(i).AppEditPath);
+        app->InsertNormalStyle(QRect(12,14,117,114),listApps.at(i).AppBgPathNormal);
+        app->InsertPushStyle(QRect(12,14,117,114),listApps.at(i).AppBgPathPush);
+        app->InsertIconStyle(QRect(12,14,117,114),listApps.at(i).AppIconPath);
+        app->InsertText(QRect(0,113,142,20),listApps.at(i).AppName,true);
+        app->InsertType(listApps.at(i).AppType);
+        app->InsertName(listApps.at(i).AppName);
+        InsertApp(i,app);
+    }
+
+    InsertAppFinish();
+}
+
+void HomeView::SetPageSize(QSize size)
 {
     m_pageSize = size;
 }
 
-QSize HomeApp::GetPageSize()
+QSize HomeView::GetPageSize()
 {
     return m_pageSize;
 }
 
-void HomeApp::InsertApp(int index, CCButton *app)
+void HomeView::InsertApp(int index, CCButton *app)
 {
     if(app)
     {
@@ -105,7 +224,7 @@ void HomeApp::InsertApp(int index, CCButton *app)
     }
 }
 
-void HomeApp::InsertAppFinish()
+void HomeView::InsertAppFinish()
 {
     INFO("page width size = %d, height size = %d ,page num =%d.",m_pageSize.width(),m_pageSize.height(),m_iPageTotalNum);
     this->resize(QSize(m_pageSize.width()*m_iPageTotalNum,m_pageSize.height()));
@@ -115,20 +234,26 @@ void HomeApp::InsertAppFinish()
 }
 
 
-void HomeApp::SetIsEditStatus(bool isEdit)
+void HomeView::SetIsEditStatus(bool isEdit)
 {
     m_bIsEditStatus = isEdit;
     m_movingTimer.stop();
     m_iMovingIndex = -1;
+    map<string,string> p;
+    if(isEdit)
+        p.insert(make_pair("AppEditStatus","true"));
+    else
+        p.insert(make_pair("AppEditStatus","false"));
+    HMIFrameWork::Inst()->Notify(QUICKLANUCH_ID,p);
     emit SigIsEnterEdit(isEdit);
 }
 
-bool HomeApp::GetIsEditStatus()
+bool HomeView::GetIsEditStatus()
 {
     return m_bIsEditStatus;
 }
 
-void HomeApp::GoToEditStatus()
+void HomeView::GoToEditStatus()
 {
     if(m_editMode == eEdit_ALL)
     {
@@ -147,14 +272,12 @@ void HomeApp::GoToEditStatus()
         if(GetApp())
         {
             SetIsEditStatus(true);
-            dynamic_cast<HomeViewManage*>(this->parent())->raise();
-            dynamic_cast<HomeViewManage*>(this->parent())->show();;
             GetApp()->SetEditStatus(true);
         }
     }
 }
 
-void HomeApp::ExitEditStatus()
+void HomeView::ExitEditStatus()
 {
     SetIsEditStatus(false);
     if(m_ListBtn.size())
@@ -174,7 +297,7 @@ void HomeApp::ExitEditStatus()
     }
 }
 
-void HomeApp::RemoveAll()
+void HomeView::RemoveAll()
 {
     if(m_ListBtn.size())
     {
@@ -191,7 +314,7 @@ void HomeApp::RemoveAll()
     }
 }
 
-void HomeApp::RemoveSelect(int index)
+void HomeView::RemoveSelect(int index)
 {
 
     if(m_ListBtn.size())
@@ -225,7 +348,7 @@ void HomeApp::RemoveSelect(int index)
     }
 }
 
-void HomeApp::RemoveSelect(QString name)
+void HomeView::RemoveSelect(QString name)
 {
     if(m_ListBtn.size())
     {
@@ -241,7 +364,7 @@ void HomeApp::RemoveSelect(QString name)
     }
 }
 
-void HomeApp::SortByIndex(int index)
+void HomeView::SortByIndex(int index)
 {
     if(m_ListBtn.size())
     {
@@ -272,7 +395,7 @@ void HomeApp::SortByIndex(int index)
     }
 }
 
-void HomeApp::SortByIndex(int PressIndex, int SelectIndex)
+void HomeView::SortByIndex(int PressIndex, int SelectIndex)
 {
     QList<CCButton*>::iterator it = m_ListBtn.begin();
     for(;it != m_ListBtn.end();++it)
@@ -323,7 +446,7 @@ void HomeApp::SortByIndex(int PressIndex, int SelectIndex)
     }
 }
 
-void HomeApp::SortByIndexNoMove(int PressIndex, int SelectIndex)
+void HomeView::SortByIndexNoMove(int PressIndex, int SelectIndex)
 {
     QList<CCButton*>::iterator it = m_ListBtn.begin();
     for(;it != m_ListBtn.end();++it)
@@ -379,7 +502,7 @@ void HomeApp::SortByIndexNoMove(int PressIndex, int SelectIndex)
     }
 }
 
-void HomeApp::SortMove()
+void HomeView::SortMove()
 {
     QList<CCButton*>::iterator it = m_ListBtn.begin();
     for(;it != m_ListBtn.end();++it)
@@ -388,23 +511,23 @@ void HomeApp::SortMove()
     }
 }
 
-void HomeApp::SetViewGeometry(QRect rect)
+void HomeView::SetViewGeometry(QRect rect)
 {
     m_viewRect = rect;
     this->setGeometry(rect);
 }
 
-void HomeApp::SetCurrentPageNum(int page)
+void HomeView::SetCurrentPageNum(int page)
 {
     m_iCurrentPageNum = page;
 }
 
-int HomeApp::GetCurrentPageNum()
+int HomeView::GetCurrentPageNum()
 {
     return m_iCurrentPageNum;
 }
 
-int HomeApp::Index(int x, int y)
+int HomeView::Index(int x, int y)
 {
     if(m_viewRect.contains(x,y))
     {
@@ -422,17 +545,17 @@ int HomeApp::Index(int x, int y)
     return -1;
 }
 
-CCButton *HomeApp::GetApp()
+CCButton *HomeView::GetApp()
 {
     return m_pAppBtn;
 }
 
-void HomeApp::SetApp(CCButton *app)
+void HomeView::SetApp(CCButton *app)
 {
     m_pAppBtn = app;
 }
 
-CCButton * HomeApp::SelectedApp(int index)
+CCButton * HomeView::SelectedApp(int index)
 {
     if(m_ListBtn.size())
     {
@@ -448,7 +571,7 @@ CCButton * HomeApp::SelectedApp(int index)
     return NULL;
 }
 
-CCButton *HomeApp::SelectedApp(int x, int y)
+CCButton *HomeView::SelectedApp(int x, int y)
 {
     if(m_viewRect.contains(x,y))
     {
@@ -466,17 +589,17 @@ CCButton *HomeApp::SelectedApp(int x, int y)
     return NULL;
 }
 
-void HomeApp::SetAnimationMode(HomeApp::eAnimationMode mode)
+void HomeView::SetAnimationMode(HomeView::eAnimationMode mode)
 {
     m_animationMode = mode;
 }
 
-HomeApp::eAnimationMode HomeApp::getAnimationMode()
+HomeView::eAnimationMode HomeView::getAnimationMode()
 {
     return m_animationMode;
 }
 
-void HomeApp::AppBtnShadow(CCButton *btn)
+void HomeView::AppBtnShadow(CCButton *btn)
 {
     if(!m_bIsStartShadow)
     {
@@ -496,7 +619,7 @@ void HomeApp::AppBtnShadow(CCButton *btn)
     }
 }
 
-void HomeApp::AppBtnZoom(CCButton *btn)
+void HomeView::AppBtnZoom(CCButton *btn)
 {   if(!m_bIsStartZoom)
     {
          m_bIsStartZoom = true;
@@ -509,7 +632,7 @@ void HomeApp::AppBtnZoom(CCButton *btn)
     }
 }
 
-void HomeApp::ToNextOrPre(QRect rect)
+void HomeView::ToNextOrPre(QRect rect)
 {
     if(rect.x() <=(m_iCurrentPageNum-1)*m_pageSize.width() )
     {
@@ -551,7 +674,7 @@ void HomeApp::ToNextOrPre(QRect rect)
     }
 }
 
-void HomeApp::ToNextPage()
+void HomeView::ToNextPage()
 {
     if(m_iCurrentPageNum < m_iPageTotalNum)
     {
@@ -573,7 +696,7 @@ void HomeApp::ToNextPage()
     }
 }
 
-void HomeApp::ToPrePage()
+void HomeView::ToPrePage()
 {
     if(m_iCurrentPageNum > 1)
     {
@@ -595,7 +718,7 @@ void HomeApp::ToPrePage()
     }
 }
 
-void HomeApp::ToSelectPage(int page)
+void HomeView::ToSelectPage(int page)
 {
     if(1 <= page && m_iPageTotalNum >= page)
     {
@@ -604,7 +727,7 @@ void HomeApp::ToSelectPage(int page)
     }
 }
 
-void HomeApp::ToNoAnimationSelectPage(int page)
+void HomeView::ToNoAnimationSelectPage(int page)
 {
     if(1 <= page && m_iPageTotalNum >= page)
     {
@@ -613,7 +736,7 @@ void HomeApp::ToNoAnimationSelectPage(int page)
     }
 }
 
-void HomeApp::MoveAnimation(const QPoint startPos, const QPoint endPos, int time)
+void HomeView::MoveAnimation(const QPoint startPos, const QPoint endPos, int time)
 {
     if(m_pMoveAnimation)
     {
@@ -626,7 +749,7 @@ void HomeApp::MoveAnimation(const QPoint startPos, const QPoint endPos, int time
     }
 }
 
-void HomeApp::UpdateTextByIndex(int index, QString text)
+void HomeView::UpdateTextByIndex(int index, QString text)
 {
     QList<CCButton*>::iterator it = m_ListBtn.begin();
     for(;it != m_ListBtn.end();++it)
@@ -638,22 +761,22 @@ void HomeApp::UpdateTextByIndex(int index, QString text)
     }
 }
 
-QList<CCButton *> HomeApp::GetAppList()
+QList<CCButton *> HomeView::GetAppList()
 {
     return m_ListBtn;
 }
 
-void HomeApp::StartUpTriggerDomain(bool isStartUpTriggerDomain)
+void HomeView::StartUpTriggerDomain(bool isStartUpTriggerDomain)
 {
     m_bIsStartUpTriggerDomain = isStartUpTriggerDomain;
 }
 
-void HomeApp::SetTriggerDomain(QRect r)
+void HomeView::SetTriggerDomain(QRect r)
 {
     m_triggerDomain = r;
 }
 
-bool HomeApp::IsTriggerDomain(int x, int y)
+bool HomeView::IsTriggerDomain(int x, int y)
 {
 
     if(!m_bIsStartUpTriggerDomain)
@@ -670,12 +793,7 @@ bool HomeApp::IsTriggerDomain(int x, int y)
     return false;
 }
 
-void HomeApp::onAppShow(string appId, string viewId)
-{
-
-}
-
-bool HomeApp::MouseEvent(QObject *obj, QEvent *event)
+bool HomeView::MouseEvent(QObject *obj, QEvent *event)
 {
     if(NULL == obj || NULL == event)
     {
@@ -782,6 +900,11 @@ bool HomeApp::MouseEvent(QObject *obj, QEvent *event)
                if(IsTriggerDomain(m_stayPos.x(),m_stayPos.y())&&!m_bIsPageMoving) {
 
                    INFO()<<"replace start .";
+                   map<string,string> p;
+                   p.insert(make_pair("QuickLanuchAppType",GetApp()->GetType().toStdString()));
+                   p.insert(make_pair("QuickLanuchX",QString::number(m_stayPos.x()).toStdString()));
+                   p.insert(make_pair("QuickLanuchY",QString::number(m_stayPos.y()).toStdString()));
+                   HMIFrameWork::Inst()->Notify(QUICKLANUCH_ID,p);
                    emit SigTriggerDomain(m_stayPos.x(),m_stayPos.y(),GetApp()->GetInfo());
                 }
 
@@ -796,7 +919,7 @@ bool HomeApp::MouseEvent(QObject *obj, QEvent *event)
         {
            if(!m_bIsMoving)
            {
-              INFO("mouse HomeApp SigRelease");
+              INFO("mouse HomeView SigRelease");
               emit SigRelease(GetApp()->GetIndex(),GetApp()->GetType(),GetApp()->GetName());
            }
         }
@@ -821,7 +944,7 @@ bool HomeApp::MouseEvent(QObject *obj, QEvent *event)
     return QWidget::eventFilter(obj,event);
 }
 
-bool HomeApp::TouchEvent(QObject *obj, QEvent *event)
+bool HomeView::TouchEvent(QObject *obj, QEvent *event)
 {
     if(NULL == obj || NULL == event)
     {
@@ -973,7 +1096,7 @@ bool HomeApp::TouchEvent(QObject *obj, QEvent *event)
         {
            if(!m_bIsMoving)
            {
-              INFO("touch HomeApp SigRelease");
+              INFO("touch HomeView SigRelease");
               emit SigRelease(GetApp()->GetIndex(),GetApp()->GetType(),GetApp()->GetName());
            }
         }
@@ -992,7 +1115,7 @@ bool HomeApp::TouchEvent(QObject *obj, QEvent *event)
     return QWidget::eventFilter(obj,event);
 }
 
-bool HomeApp::GestureEvent(QObject *obj, QEvent *event)
+bool HomeView::GestureEvent(QObject *obj, QEvent *event)
 {
     if(NULL == obj || NULL == event)
     {
@@ -1003,7 +1126,7 @@ bool HomeApp::GestureEvent(QObject *obj, QEvent *event)
 }
 
 
-bool HomeApp::eventFilter(QObject *obj, QEvent *event)
+bool HomeView::eventFilter(QObject *obj, QEvent *event)
 {
     switch (event->type()) {
     case QEvent::MouseButtonDblClick:
@@ -1054,12 +1177,12 @@ bool HomeApp::eventFilter(QObject *obj, QEvent *event)
     return QWidget::eventFilter(obj,event);
 }
 
-QPoint HomeApp::getPosition()
+QPoint HomeView::getPosition()
 {
 
 }
 
-void HomeApp::setPosition(QPoint position)
+void HomeView::setPosition(QPoint position)
 {
     this->move(position);
     if(GetApp())
@@ -1069,8 +1192,7 @@ void HomeApp::setPosition(QPoint position)
     update();
 }
 
-
-void HomeApp::PressTimeout()
+void HomeView::PressTimeout()
 {
     GoToEditStatus();
     if(GetApp())
@@ -1081,7 +1203,7 @@ void HomeApp::PressTimeout()
     }
 }
 
-void HomeApp::FlipTimeout()
+void HomeView::FlipTimeout()
 {
     switch (m_flip) {
     case eAFlipModeToNext:
@@ -1128,12 +1250,12 @@ void HomeApp::FlipTimeout()
     }
 }
 
-void HomeApp::OnSortByIndex(int PressIndex, int SelectIndex)
+void HomeView::OnSortByIndex(int PressIndex, int SelectIndex)
 {
     SortByIndex(PressIndex,SelectIndex);
 }
 
-void HomeApp::OnMoving()
+void HomeView::OnMoving()
 {
     m_movingTimer.stop();
     if(GetApp() &&GetIsEditStatus()&& m_iMovingIndex >=0)
@@ -1145,7 +1267,7 @@ void HomeApp::OnMoving()
     }
 }
 
-void HomeApp::OnMoveParentFinish(int index)
+void HomeView::OnMoveParentFinish(int index)
 {
     m_bIsPageMoving = false;
     if(m_iFlipStep != 2)
@@ -1174,7 +1296,7 @@ void HomeApp::OnMoveParentFinish(int index)
     Q_UNUSED(index);
 }
 
-void HomeApp::OnMoveAppFinish(int index)
+void HomeView::OnMoveAppFinish(int index)
 {
     if(1 != m_iFlipStep)
     {
@@ -1188,7 +1310,15 @@ void HomeApp::OnMoveAppFinish(int index)
                m_iFlipStep = 2;
                this->ToNextPage();
        }
-    }  
+    }
+}
+
+void HomeView::OnAppClick(int index, QString type, QString name)
+{
+    INFO()<<" index = " << index << " type = " << type << " name = " << name;
+    map<string,string> p ;
+    p.insert(make_pair("AppClick",type.toStdString()));
+    HMIFrameWork::Inst()->Notify(HOME_ID,p);
 }
 
 

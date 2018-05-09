@@ -1,7 +1,7 @@
 #include "SDLVFactory.h"
-#include "SDLAppsView.h"
-#include "SDLApps.h"
-#include "Gen3UIManager.h"
+#include "SDLApps/UI/SDLAppsView.h"
+#include "SDLApps/app/SDLApps.h"
+#include "SDLApps/Gen3UIManager.h"
 #include <QDialog>
 #include "HMIFrameWork/HMIFrameWork.h"
 SDLVFactory::SDLVFactory()
