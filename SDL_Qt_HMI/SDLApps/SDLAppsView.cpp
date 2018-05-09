@@ -108,7 +108,12 @@ SDLAppsView::~SDLAppsView() {
   */
   //delete []m_pChildApps;
 
-  //delete videoWidget;
+    //delete videoWidget;
+}
+
+void SDLAppsView::viewAction(int state)
+{
+
 }
 
 void SDLAppsView::HideAllComponent() {

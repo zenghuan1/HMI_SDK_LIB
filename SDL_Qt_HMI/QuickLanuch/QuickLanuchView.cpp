@@ -2,6 +2,7 @@
 #include <QStylePainter>
 #include <QStyleOption>
 #include "QuickLanuch.h"
+#include "HMIFrameWork/HMIFrameWork.h"
 QuickLanuchView::QuickLanuchView(QWidget *parent)
     :QWidget(parent)
     ,CView(QuickLanuch::eViewId_Main)
@@ -32,6 +33,7 @@ QuickLanuchView::QuickLanuchView(QWidget *parent)
     InitQuickLanuchView();
 
     connect(QuickLanuch::Inst(),SIGNAL(SigAppInfo(int,int,string)),this,SLOT(OnReplaceInfo(int,int,string)),Qt::UniqueConnection);
+    connect(this,SIGNAL(SigRelease(int,QString,QString)),this,SLOT(OnAppClick(int,QString,QString)),Qt::UniqueConnection);
     this->show();
 
 }
@@ -469,4 +471,11 @@ void QuickLanuchView::PullBackAnimation(const QPoint startPos, const QPoint endP
 void QuickLanuchView::OnReplaceInfo(int x ,int y ,string type)
 {
     ReplaceQucikLanuch(x,y,QString::fromStdString( type));
+}
+
+void QuickLanuchView::OnAppClick(int index, QString type, QString name)
+{
+    map<string,string> p ;
+    p.insert(make_pair("AppClick",type.toStdString()));
+    HMIFrameWork::Inst()->Notify(HOME_ID,p);
 }

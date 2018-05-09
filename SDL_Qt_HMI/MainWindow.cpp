@@ -44,16 +44,3 @@ void MainWindow::InitSDLApps()
     HMIFrameWork::Inst()->RegisterApp(dynamic_cast<App*> (SDLApps::Inst()));
 }
 
-
-void MainWindow::OnEdit(bool bStatus)
-{
-    if(bStatus)
-    {
-        m_pQuickLanuch->lower();
-        m_pQuickLanuch->show();
-    }else
-    {
-        m_pQuickLanuch->raise();
-        m_pQuickLanuch->show();
-    }
-}

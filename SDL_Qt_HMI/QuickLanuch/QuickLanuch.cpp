@@ -23,19 +23,19 @@ QuickLanuch *QuickLanuch::Inst()
 
 void QuickLanuch::onAppShow(string appId, string viewId)
 {
-    connect(this,SIGNAL(SigAppShow(string,string)),this,SLOT(OnAppShow(string,string)));
+    connect(this,SIGNAL(SigAppShow(string,string)),this,SLOT(OnAppShow(string,string)),Qt::UniqueConnection);
     emit SigAppShow(appId,viewId);
 }
 
 void QuickLanuch::onAppHide()
 {
-    connect(this,SIGNAL(SigAppHide()),this,SLOT(OnAppHide()));
+    connect(this,SIGNAL(SigAppHide()),this,SLOT(OnAppHide()),Qt::UniqueConnection);
     emit SigAppHide();
 }
 
 void QuickLanuch::onNotify(string appId, map<string, string> parameter)
 {
-    connect(this,SIGNAL(SigNotify(string,map<string,string>)),this,SLOT(OnNotify(string,map<string,string>)));
+    connect(this,SIGNAL(SigNotify(string,map<string,string>)),this,SLOT(OnNotify(string,map<string,string>)),Qt::UniqueConnection);
     emit SigNotify(appId,parameter);
 }
 

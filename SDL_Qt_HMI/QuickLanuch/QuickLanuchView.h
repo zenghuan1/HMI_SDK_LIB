@@ -12,7 +12,7 @@
 #include <QPainter>
 #include "HMIFrameWork/log_interface.h"
 #include <QCoreApplication>
-#include "CCButton.h"
+#include "HMIWidgets/CCButton.h"
 
 #include "HMIFrameWork/CView.h"
 #include "HMIFrameWork/AppConfig.h"
@@ -71,6 +71,7 @@ signals:
     void SigVoiceClick();
 public slots:
     void OnReplaceInfo(int x,int y,string type);
+    void OnAppClick(int,QString,QString);
 private:
     QPropertyAnimation      *m_pMoveAnimation;
     QRect                    m_viewRect;

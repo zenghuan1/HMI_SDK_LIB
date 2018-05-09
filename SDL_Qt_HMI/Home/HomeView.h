@@ -10,8 +10,8 @@
 #include <QPainter>
 #include <QCoreApplication>
 #include "HMIFrameWork/log_interface.h"
-#include "CCButton.h"
-#include "QuickLanuchView.h"
+#include "HMIWidgets/CCButton.h"
+#include "QuickLanuch/QuickLanuchView.h"
 #include "HMIFrameWork/AppConfig.h"
 #include "HMIFrameWork/App.h"
 #include "HMIFrameWork/CView.h"

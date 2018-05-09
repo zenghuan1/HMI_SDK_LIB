@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include "Home/HomeWindow.h"
-#include "Home/QuickLanuchView.h"
+#include "QuickLanuch/QuickLanuchView.h"
 #include "Home/Home.h"
 #include "Home/HomeVFactory.h"
-#include "Home/QuickLanuch.h"
+#include "QuickLanuch/QuickLanuch.h"
 #include "HMIFrameWork/AppManager.h"
 #include "HMIFrameWork/HMIFrameWork.h"
 #include "AppViewManager.h"
@@ -25,9 +25,7 @@ public:
     void InitHome();
     void InitQuickLanuch();
     void InitSDLApps();
-private slots:
 
-    void OnEdit(bool bStatus);
 private:
     Ui::MainWindow *ui;
     AppViewManager *m_pAppViewManager;

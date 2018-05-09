@@ -24,6 +24,8 @@ class SDLAppsView : public QWidget,public CView{
  public:
   explicit SDLAppsView(AppListInterface *pList, QWidget *parent = 0);
   ~SDLAppsView();
+   virtual void viewAction(int state);
+
   QWidget *CenterWidget();
   //void InsertChildApp(int index,int funcId,QString text,QString on,QString off);
   //void DeleteChildApp(int index);

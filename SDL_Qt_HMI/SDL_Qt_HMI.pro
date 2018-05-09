@@ -92,11 +92,11 @@ SOURCES += main.cpp\
     AppViewManager.cpp \
     Home/HomeWindow.cpp \
     SDLApps/SDLAppsWindow.cpp \
-    Home/CCButton.cpp \
-    Home/QuickLanuchView.cpp \
-    Home/QuickLanuch.cpp \
-    Home/QuickVFactory.cpp \
-    Home/QuickLanuchWindow.cpp
+    HMIWidgets/CCButton.cpp \
+    QuickLanuch/QuickLanuch.cpp \
+    QuickLanuch/QuickLanuchView.cpp \
+    QuickLanuch/QuickLanuchWindow.cpp \
+    QuickLanuch/QuickVFactory.cpp
 
 unix {
     SOURCES += SDLApps/VideoStream/gst_player.cpp
@@ -151,11 +151,11 @@ HEADERS  +=  \
     AppViewManager.h \
     Home/HomeWindow.h \
     SDLApps/SDLAppsWindow.h \
-    Home/CCButton.h \
-    Home/QuickLanuchView.h \
-    Home/QuickLanuch.h \
-    Home/QuickVFactory.h \
-    Home/QuickLanuchWindow.h
+    HMIWidgets/CCButton.h \
+    QuickLanuch/QuickLanuch.h \
+    QuickLanuch/QuickLanuchView.h \
+    QuickLanuch/QuickLanuchWindow.h \
+    QuickLanuch/QuickVFactory.h
 
 
 

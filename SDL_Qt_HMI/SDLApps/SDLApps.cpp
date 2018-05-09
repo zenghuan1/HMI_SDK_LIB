@@ -1,6 +1,5 @@
 #include "SDLApps.h"
 #include "SDLAppsWindow.h"
-#include "HMIFrameWork/log_interface.h"
 SDLApps* SDLApps::m_pInst = NULL;
 
 SDLApps::SDLApps()
@@ -22,19 +21,19 @@ SDLApps *SDLApps::Inst()
 
 void SDLApps::onAppShow(string appId, string viewId)
 {
-    connect(this,SIGNAL(SigAppShow(string,string)),this,SLOT(OnAppShow(string,string)));
+    connect(this,SIGNAL(SigAppShow(string,string)),this,SLOT(OnAppShow(string,string)),Qt::UniqueConnection);
     emit SigAppShow(appId,viewId);
 }
 
 void SDLApps::onAppHide()
 {
-    connect(this,SIGNAL(SigAppHide()),this,SLOT(OnAppHide()));
+    connect(this,SIGNAL(SigAppHide()),this,SLOT(OnAppHide()),Qt::UniqueConnection);
     emit SigAppHide();
 }
 
 void SDLApps::onNotify(string appId, map<string, string> parameter)
 {
-    connect(this,SIGNAL(SigNotify(string,map<string,string>)),this,SLOT(OnNotify(string,map<string,string>)));
+    connect(this,SIGNAL(SigNotify(string,map<string,string>)),this,SLOT(OnNotify(string,map<string,string>)),Qt::UniqueConnection);
     emit SigNotify(appId,parameter);
 }
 

@@ -13,6 +13,7 @@ public:
     void SetMain(void * pMain);
     void* GetMainWindow();
     void AppShow(string id,string view="Main");
+    void AppBack();
     void Notify(string appId,map<string,string> parameter);
     ~HMIFrameWork();
 private:

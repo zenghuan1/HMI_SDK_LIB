@@ -4,6 +4,8 @@
 #include "HMIFrameWork/AppConfig.h"
 #include "SDLVFactory.h"
 #include "SDLAppsWindow.h"
+#include "HMIFrameWork/log_interface.h"
+#include "HMIFrameWork/HMIFrameWork.h"
 class SDLApps:public QObject,public App
 {
     Q_OBJECT

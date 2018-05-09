@@ -40,6 +40,11 @@ void HMIFrameWork::AppShow(string id, string view)
     m_pAppManager->AppShow(id,view);
 }
 
+void HMIFrameWork::AppBack()
+{
+    m_pAppManager->AppBack();
+}
+
 void HMIFrameWork::Notify(string appId, map<string, string> parameter)
 {
     m_pAppManager->Notify(appId,parameter);
