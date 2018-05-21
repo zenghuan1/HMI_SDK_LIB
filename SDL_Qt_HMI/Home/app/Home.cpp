@@ -5,7 +5,7 @@ Home* Home::m_pInst = NULL;
 Home::Home()
 {
 
-    setAppType(AppType_HomeApp);
+    setAppType(AppType_App);
     setAppId(HOME_ID);
     InitViewFactory(HomeVFactory::Inst());
     setMain(reinterpret_cast<void*>(new HomeWindow()));

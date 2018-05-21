@@ -19,7 +19,6 @@ enum eViewStatus{
     eViewStatus_Active
 };
 enum eAppType{
-    AppType_HomeApp,
     AppType_App,
     AppType_Decorators
 };

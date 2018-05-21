@@ -16,11 +16,7 @@ void AppManager::RegisterApp(App *app)
 {
     if(app)
     {
-        if(app->getAppType() == AppType_HomeApp)
-        {
-            app->setState(AppStatus_Active);
-            IntertApp(app);
-        }else if(app->getAppType() == AppType_App)
+        if(app->getAppType() == AppType_App)
         {
             app->setState(AppStatus_Inactive);
             IntertApp(app);
